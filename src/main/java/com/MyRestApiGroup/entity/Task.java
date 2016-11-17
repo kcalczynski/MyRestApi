@@ -4,6 +4,8 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
+import static java.lang.Boolean.FALSE;
+
 @Entity
 @Table(name = "TASKS")
 public class Task {
@@ -29,6 +31,11 @@ public class Task {
         Name = name;
         Description = description;
         Status = status;
+    }
+    public Task(String name, String description) {
+        Name = name;
+        Description = description;
+        Status = FALSE;
     }
 
     public Task(){

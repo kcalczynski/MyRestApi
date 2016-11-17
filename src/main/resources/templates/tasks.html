@@ -2,20 +2,55 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/app.css}" />
+    <title>Main Page</title>
 </head>
 <body>
 
-<div th:each="task : ${tasks}">
+<h1>----------Add new task----------</h1>
+<form th:action="@{appendTask}" th:object="${task}" th:method="POST">
+    Name:<input name="Tname"/>
+    Description:<input name="Tdesc"/>
+    <button type="submit">Add</button>
+
+</form>
+<h1>----------List of available Tasks----------</h1>
+
     <table border="1" bordercolor="red">
-        <tr>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>DESCRIPTION</th>
+                <th>STATUS</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr th:each="task : ${tasks}">
             <td th:text="${task.id}">ID</td>
             <td th:text="${task.Name}">Nazwa</td>
             <td th:text="${task.Description}">Opis</td>
-            <td th:text="${task.Status}">Status</td>
+            <td th:if="${task.Status}"> <img th:src="@{'/icons/finished.png'}"/></td>
+            <td th:unless="${task.Status}"> <img th:src="@{'/icons/unfinished.png'}"/></td>
+            <td>
+
+                    <form th:action="@{editTask/__${task.id}__}" th:object="${task}" th:method="POST">
+                        <button type="submit"><img th:src="@{'/icons/edit.png'}"/></button>
+                    </form>
+            </td>
+            <td>
+                <form th:action="@{deleteTask/__${task.id}__}" th:object="${task}" th:method="POST">
+                    <button type="submit"><img th:src="@{'/icons/delete.png'}"/></button>
+                </form>
+
+            </td>
         </tr>
     </table>
-</div>
+
+<form>
+
+</form>
 
 </body>
 </html>

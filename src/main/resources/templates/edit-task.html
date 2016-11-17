@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>edycja</title>
+</head>
+<body>
+<h1>---------TASK EDITING-------</h1>
+<form th:action="@{/modifyTask/__${id}__}" th:object="${task}" th:method="POST">
+    Name:<input name="ETname" th:value="${thisOne.Name}"/>
+    Description:<input name="ETdesc" th:value="${thisOne.Description}"/>
+    Finished: <input type="checkbox" name="ETstat" th:checked="${thisOne.Status} ? 'checked'"/>
+
+    <button type="submit">Save</button>
+</form>
+
+</body>
+</html>

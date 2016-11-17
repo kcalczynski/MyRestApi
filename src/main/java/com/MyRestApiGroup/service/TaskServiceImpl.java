@@ -1,7 +1,6 @@
 package com.MyRestApiGroup.service;
 
 import com.MyRestApiGroup.entity.Task;
-import com.MyRestApiGroup.repository.TaskDao;
 import com.MyRestApiGroup.repository.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
